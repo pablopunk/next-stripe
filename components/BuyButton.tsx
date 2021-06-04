@@ -1,5 +1,5 @@
 import { loadStripe } from '@stripe/stripe-js'
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent, useEffect, useState } from 'react'
 import Stripe from 'stripe'
 
 const stripePromise = loadStripe(
@@ -12,7 +12,13 @@ type Props = {
 }
 
 const BuyButton: FunctionComponent<Props> = ({ quantity, price, children }) => {
-  const [stripeError, setStripeError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => setError(null), 3000)
+    }
+  }, [error])
 
   const handleClick = async () => {
     const { sessionId } = await fetch('/api/checkout', {
@@ -23,13 +29,21 @@ const BuyButton: FunctionComponent<Props> = ({ quantity, price, children }) => {
       body: JSON.stringify({ quantity, price: price.id }),
     }).then((r) => r.json())
     const stripe = await stripePromise
-    const { error } = await stripe?.redirectToCheckout({
+    const response = await stripe?.redirectToCheckout({
       sessionId,
     })
 
-    if (error) {
-      setStripeError(error)
+    if (response?.error) {
+      setError('Something went wrong')
     }
+  }
+
+  if (error) {
+    return (
+      <button className="px-3 py-2 text-xs font-bold text-white uppercase bg-red-700 rounded">
+        {error}
+      </button>
+    )
   }
 
   return (
@@ -40,7 +54,6 @@ const BuyButton: FunctionComponent<Props> = ({ quantity, price, children }) => {
       >
         {children}
       </button>
-      {stripeError && <div className="text-red-700">{stripeError}</div>}
     </>
   )
 }
