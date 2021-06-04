@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from 'next'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
@@ -7,10 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
 
 const PAGE_SIZE = 10
 
-export default async function ApiProducts(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export async function getProducts() {
   let { data: products, has_more } = await stripe.products.list({
     limit: PAGE_SIZE,
   })
@@ -24,9 +20,9 @@ export default async function ApiProducts(
     prices[price.product.toString()] = price
   }
 
-  return res.status(200).send({
+  return {
     products,
     prices,
     more: has_more,
-  })
+  }
 }

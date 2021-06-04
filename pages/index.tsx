@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next'
 import { FunctionComponent } from 'react'
 import Stripe from 'stripe'
 import BuyButton from 'components/BuyButton'
+import { getProducts } from 'stripe/api'
 
 type Props = {
   products: Stripe.Product[]
@@ -51,9 +52,8 @@ const Index: FunctionComponent<Props> = ({ products, prices }) => {
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { products, prices } = await fetch(API_URL + '/products').then((r) =>
-    r.json()
-  )
+  const { products, prices } = await getProducts()
+
   return {
     props: {
       products,
