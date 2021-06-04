@@ -2,7 +2,7 @@
 
 > Serverless ecommerce.
 
-This is a simple project to help you get started with your first online ecommerce. [**See Demo**](https://next-stripe.pablopunk.com).
+This is a simple project to help you get started with your first online ecommerce. [**Live Demo**](https://next-stripe.pablopunk.com).
 
 ## Get started
 
