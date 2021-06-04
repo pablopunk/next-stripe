@@ -1,34 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# next-stripe
 
-## Getting Started
+> Serverless ecommerce.
 
-First, run the development server:
+This is a simple project to help you get started with your first online ecommerce. [**See Demo**](https://next-stripe.pablopunk.com).
 
-```bash
+## Get started
+
+Just clone the repo and provide the stripe secrets inside `.env`. You can check [`.env.sample`](./.env.sample) for all the needed variables.
+
+### Development
+
+```sh
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Deploy
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+You can easily deploy it with [Vercel](https://vercel.com), or just host it your own:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```sh
+npm run build && npm start
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Features
 
-## Learn More
+I want to keep it as simple as possible. This is not meant to be a production-ready ecommerce, it's just a startpoint so you can start playing with the Stripe API.
 
-To learn more about Next.js, take a look at the following resources:
+- [x] SSG
+- [x] List all products and their prices
+- [x] Click "buy" on a product and it will take you to Stripe Checkout page for that product
+- [ ] WIP
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Author
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| ![me](https://gravatar.com/avatar/fa50aeff0ddd6e63273a068b04353d9d?size=100) |
+| ---------------------------------------------------------------------------- |
+| [Pablo Varela](https://pablopunk.com)                                        |
