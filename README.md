@@ -29,7 +29,9 @@ I want to keep it as simple as possible. This is not meant to be a production-re
 - [x] SSG
 - [x] List all products and their prices
 - [x] Click "buy" on a product and it will take you to Stripe Checkout page for that product
-- [ ] WIP
+- [ ] Product page
+- [ ] Pagination
+- [ ] Categories?
 
 ## Author
 
